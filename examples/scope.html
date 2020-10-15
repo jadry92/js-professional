@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scopes</title>
+</head>
+
+<body>
+  <h2>Scopes</h2>
+  <h4>open the inspector</h4>
+  <script>
+    function printNumber() {
+      var i;
+      for (i = 0; i < 10; i++) {
+        setTimeout(() => {
+          console.log(i);
+        }, 100);
+      }
+    }
+    function printNumber1() {
+      var i;
+      for (i = 0; i < 10; i++) {
+        function eventPrintNumber(n) {
+          setTimeout(() => {
+            console.log(n);
+          }, 100);
+        }
+        eventPrintNumber(i);
+      }
+    }
+    function printNumber2() {
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+          console.log(i);
+        }, 100);
+      }
+    }
+    printNumber();
+    printNumber1();
+    printNumber2();
+  </script>
+</body>
+
+</html>
