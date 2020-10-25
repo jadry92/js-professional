@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype inheritance</title>
+</head>
+
+<body>
+  <h3>open the console</h3>
+
+  <script>
+    function Hero(name) {
+      this.name = name;
+      return this
+    }
+
+    Hero.prototype.greed = function () {
+      console.log(`my a super NEW hero ${this.name}`);
+    };
+
+    const zelda = new Hero('zelda')
+
+    console.log("Name", zelda.name);
+
+    console.log("greed", zelda.greed);
+
+    console.log("toString", zelda.toString);
+
+    console.log("hasOwnPropertyName", zelda.hasOwnProperty('name'));
+    console.log("hasOwnPropertyGreed", zelda.hasOwnProperty('greed'));
+
+    console.log("greed", zelda);
+  </script>
+</body>
+
+</html>
