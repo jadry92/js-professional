@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype</title>
+</head>
+
+<body>
+  <h3>open the console</h3>
+
+  <script>
+
+    // function Hero(name) {
+    //   const hero = {
+    //     name: name
+    //   }
+
+    //   hero.greed = function () {
+    //     console.log(`Hi, I'm ${this.name}`);
+    //   };
+
+    //   return hero
+    // }
+
+    // const zelda = Hero('zelda')
+    // zelda.greed();
+
+    // const link = Hero('link')
+    // link.greed();
+
+    // const heroMethods = {
+    //   greed: function () {
+    //     console.log(`my name ${this.name}`);
+    //   },
+    // };
+
+    // function Hero(name) {
+    //   const hero = {
+    //     name: name
+    //   };
+
+    //   hero.greed = heroMethods.greed;
+
+    //   return hero
+    // }
+    // const zelda = Hero('zelda')
+    // zelda.greed();
+
+    // const link = Hero('link')
+    // link.greed();
+
+    // Object.create
+
+    // const heroMethods = {
+    //   greed: function () {
+    //     console.log(`my a super ${this.name}`);
+    //   },
+    // };
+
+    // function Hero(name) {
+    //   const hero = Object.create(heroMethods)
+    //   hero.name = name;
+
+    //   return hero
+    // }
+    // const zelda = Hero('zelda')
+    // zelda.greed();
+
+    // const link = Hero('link')
+    // link.greed();
+
+    // function Hero(name) {
+    //   const hero = Object.create(Hero.prototype)
+    //   hero.name = name;
+    //   return hero;
+    // }
+
+    // Hero.prototype.greed = function () {
+    //   console.log(`my a super hero ${this.name}`);
+    // };
+    // const zelda = new Hero('zelda')
+    // zelda.greed();
+
+    // const link = new Hero('link')
+    // link.greed();
+
+    // prototype
+
+    function Hero(name) {
+      this.name = name;
+      return this
+    }
+
+    Hero.prototype.greed = function () {
+      console.log(`my a super NEW hero ${this.name}`);
+    };
+    const zelda = new Hero('zelda')
+    zelda.greed();
+
+    const link = new Hero('link')
+    link.greed();
+
+  </script>
+</body>
+
+</html>

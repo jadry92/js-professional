@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Stop Fetching</title>
+</head>
+
+<body>
+  <a href="/examples/">back</a>
+  <h2>Stop Fetching</h2>
+  <h4>open the inspector</h4>
+  <img id="huge-image" height="400" alt="an image">
+  <button id="load">loading</button>
+  <button id="stop">abort</button>
+  <script>
+    const url = "https://upload.wikimedia.org/wikipedia/commons/4/41/Wac_nearside_3000.jpg"
+    const img = document.getElementById('huge-image')
+    const stopButton = document.getElementById('stop')
+    const loadButton = document.getElementById('load')
+    let controller;
+    function startLoading() {
+      loadButton.disabled = true;
+      loadButton.innerText = 'Loading ...';
+      stopButton.disabled = false
+    }
+
+    function stopLoading() {
+      loadButton.disabled = false;
+      loadButton.innerText = 'Load HUGE image';
+      stopButton.disabled = true;
+    }
+
+    loadButton.onclick = async function () {
+      startLoading();
+      controller = new AbortController()
+      try {
+        const response = await fetch(url, { signal: controller.signal });
+        const blob = await response.blob();
+        const imgURL = URL.createObjectURL(blob);
+        img.src = imgURL;
+      } catch {
+        console.log('stop');
+      }
+
+      stopLoading();
+    }
+
+    stopButton.onclick = function () {
+      controller.abort()
+      stopLoading();
+    }
+  </script>
+</body>
+
+</html>
